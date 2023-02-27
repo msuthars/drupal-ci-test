@@ -3,7 +3,7 @@ name: Drupal coding standards
 on: 
   pull_request:
     types: [opened, synchronize, reopened]
-    branches: [dev]
+    branches: [main]
 
 jobs:
   phpcs:
