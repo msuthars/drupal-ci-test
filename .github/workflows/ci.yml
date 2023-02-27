@@ -12,9 +12,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Composer install
+      - name: Install code sniffer
         run: |
-          composer install
+          composer require --dev dealerdirect/phpcodesniffer-composer-installer
+          composer require --dev drupal/coder
 
       - name: Check drupal coding standards
         run: vendor/bin/phpcs --standard="Drupal,DrupalPractice" --extensions="php,module,inc,install,test,profile,theme,info,yml" --ignore="*/style.css,/node_modules/"
