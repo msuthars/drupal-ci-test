@@ -1,0 +1,20 @@
+name: Drupal coding standards
+
+on: 
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [dev]
+
+jobs:
+  phpcs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Composer install
+        run: |
+          composer install
+
+      - name: Check drupal coding standards
+        run: vendor/bin/phpcs --standard="Drupal,DrupalPractice" --extensions="php,module,inc,install,test,profile,theme,info,yml" --ignore="*/style.css,/node_modules/"
